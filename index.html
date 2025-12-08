@@ -772,15 +772,123 @@
                 justify-content: center;
             }
         }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ANIME / SYSTEM AESTHETICS & ANIMATIONS
+        ═══════════════════════════════════════════════════════════════ */
+
+        /* Fade In Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Netflix-style Horizontal Scroll */
+        .netflix-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0 40px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .netflix-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .netflix-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+        }
+
+        /* Anime System Widget */
+        .system-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(5, 5, 8, 0.9);
+            border: 1px solid var(--gold-primary);
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.65rem;
+            color: var(--gold-primary);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .system-blink {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: systemic-pulse 2s infinite;
+        }
+
+        @keyframes systemic-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+            }
+        }
+
+        /* Decorative Tech Lines */
+        .tech-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .tech-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -2px;
+            width: 20px;
+            height: 5px;
+            background: var(--gold-primary);
+            transform: translateX(-50%) skewX(-45deg);
+            opacity: 0.5;
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- SYSTEM WIDGET -->
+    <div class="system-widget fade-in-up">
+        <div class="system-blink"></div>
+        <span>SYSTEM ONLINE // v0.5</span>
+    </div>
+
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero fade-in-up">
         <div class="container">
-            <div class="status-badge">BASIN::NEXUS v0.5 // 8,297 Lines Deployed</div>
+            <div class="status-badge">BASIN::NEXUS v0.5 // 8,400+ Lines Deployed</div>
 
             <h1 class="hero-title">
                 I Don't Just Sell Tech—<br>
@@ -794,12 +902,13 @@
 
             <div class="stats-row">
                 <div class="stat">
+                    <!-- Updated with new metrics -->
                     <div class="stat-value">160%</div>
                     <div class="stat-label">Pipeline Growth</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">$11M+</div>
-                    <div class="stat-label">Pipeline Generated</div>
+                    <div class="stat-value">$2M+</div>
+                    <div class="stat-label">Net New Revenue</div>
                 </div>
                 <div class="stat">
                     <div class="stat-value">5</div>
@@ -817,7 +926,7 @@
             </div>
             <!-- Sub-links -->
             <div
-                style="font-size: 0.75rem; display: flex; gap: 20px; justify-content: center; color: var(--text-muted);">
+                style="font-size: 0.75rem; display: flex; gap: 20px; justify-content: center; color: var(--text-muted); margin-top: 10px;">
                 <a href="https://github.com/BasinLeon/basin-signal-engine" target="_blank"
                     style="color: var(--text-muted); text-decoration: none;">📦 Source Code</a>
                 <a href="Leon_Basin_Resume.pdf" target="_blank"
@@ -855,6 +964,91 @@
                     <div class="triad-title">The Strategist's Eye</div>
                     <div class="triad-desc">MBA-trained to create GTM narratives and pipeline architecture that delivers
                         predictable growth.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS (NETFLIX STYLE) -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="tech-line"></div>
+                <p class="section-subtitle">Select a project to authorize system access.</p>
+            </div>
+
+            <div class="netflix-slider">
+                <!-- Project 1: Signal Engine -->
+                <div class="nexus-showcase netflix-card" style="margin-top: 0; min-height: 250px;">
+                    <h3 class="feature-title" style="font-size: 1rem;">⚡ basin-signal-engine</h3>
+                    <p class="feature-desc">AI Career Intelligence Platform. 8,400+ lines of Python. Hunt → Prep →
+                        Close.</p>
+                    <div class="nexus-meta"
+                        style="margin-top: 15px; padding-top: 15px; justify-content: start; gap: 10px;">
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">Python</span>
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">Streamlit</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="https://basin-nexus.streamlit.app" target="_blank" class="publication-link">▶ LIVE
+                            DEMO</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: BS Detector -->
+                <div class="nexus-showcase netflix-card" style="margin-top: 0; min-height: 250px;">
+                    <h3 class="feature-title" style="font-size: 1rem;">🔴 bs-detector</h3>
+                    <p class="feature-desc">Technical BS Detector. Score outreach for engineer credibility. Fix sales
+                        speak.</p>
+                    <div class="nexus-meta"
+                        style="margin-top: 15px; padding-top: 15px; justify-content: start; gap: 10px;">
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">JavaScript</span>
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">Node</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="https://github.com/BasinLeon/bs-detector" target="_blank" class="publication-link">⚙
+                            SOURCE</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Lead Script Gen -->
+                <div class="nexus-showcase netflix-card" style="margin-top: 0; min-height: 250px;">
+                    <h3 class="feature-title" style="font-size: 1rem;">📝 lead-script-gen</h3>
+                    <p class="feature-desc">LLM-Powered Outbound Scripts. Generate personalized sequences with ICP
+                        targeting.</p>
+                    <div class="nexus-meta"
+                        style="margin-top: 15px; padding-top: 15px; justify-content: start; gap: 10px;">
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">LLM</span>
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">Python</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="https://github.com/BasinLeon/lead-script-generator" target="_blank"
+                            class="publication-link">⚙ SOURCE</a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Portfolio -->
+                <div class="nexus-showcase netflix-card" style="margin-top: 0; min-height: 250px;">
+                    <h3 class="feature-title" style="font-size: 1rem;">🌐 basinleon.io</h3>
+                    <p class="feature-desc">This Portfolio. Golden Executive OS aesthetic. Career Intelligence
+                        Dashboard.</p>
+                    <div class="nexus-meta"
+                        style="margin-top: 15px; padding-top: 15px; justify-content: start; gap: 10px;">
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">HTML/CSS</span>
+                        <span
+                            style="font-size: 0.7rem; border: 1px solid var(--gold-border); padding: 2px 8px; border-radius: 4px;">GitHub</span>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="https://github.com/BasinLeon/basinleon.github.io" target="_blank"
+                            class="publication-link">⚙ SOURCE</a>
+                    </div>
                 </div>
             </div>
         </div>
